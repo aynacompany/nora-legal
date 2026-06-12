@@ -1,0 +1,383 @@
+/* ============================================================
+   Nora — Legal pages stylesheet
+   ============================================================
+   Light theme, max-width content for readability, brand peach
+   accent (#EEA081) matching the iOS app's candlelight palette.
+
+   Style language: minimal, system-typeset, no JavaScript, no
+   external CSS frameworks. Works fine offline, prints cleanly,
+   readable on every viewport from iPhone SE up.
+   ============================================================ */
+
+:root {
+  --peach: #EEA081;
+  --peach-deep: #D27F61;
+  --ink: #1A0F14;
+  --ink-soft: #4B4146;
+  --muted: #7A6B71;
+  --bg: #FBFAF7;
+  --surface: #FFFFFF;
+  --border: #E9E2DE;
+  --radius: 14px;
+  --max-width: 720px;
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-system);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ----- Header ---------------------------------------------- */
+
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(251, 250, 247, 0.95);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand .brand-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--peach);
+  margin-right: 8px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+nav.site-nav {
+  display: flex;
+  gap: 22px;
+  font-size: 15px;
+}
+
+nav.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+nav.site-nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--peach);
+}
+
+nav.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--peach);
+}
+
+/* ----- Main content ---------------------------------------- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+.page-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--peach-deep);
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.lede {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 36px;
+}
+
+.dates {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dates strong {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 56px 0 14px;
+  font-weight: 700;
+  color: var(--ink);
+  scroll-margin-top: 80px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 32px 0 10px;
+  font-weight: 700;
+  color: var(--ink);
+  scroll-margin-top: 80px;
+}
+
+p {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+}
+
+ul {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: var(--ink-soft);
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+  color: var(--ink-soft);
+}
+
+ol li {
+  margin-bottom: 8px;
+}
+
+strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+a {
+  color: var(--peach-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+code {
+  font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: rgba(238, 160, 129, 0.10);
+  padding: 1px 6px;
+  border-radius: 6px;
+  color: var(--ink);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ----- Index / landing page card --------------------------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--peach);
+  box-shadow: 0 10px 30px -16px rgba(238, 160, 129, 0.45);
+  color: inherit;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.card-arrow {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--peach-deep);
+  font-weight: 600;
+}
+
+/* ----- Footer ---------------------------------------------- */
+
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+  padding: 28px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer.site-footer a {
+  color: var(--muted);
+}
+
+footer.site-footer a:hover {
+  color: var(--peach-deep);
+}
+
+footer.site-footer .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-right: 16px;
+}
+
+footer.site-footer .footer-brand .brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--peach);
+}
+
+/* ----- Mobile niceties ------------------------------------- */
+
+@media (max-width: 520px) {
+  .site-header-inner {
+    padding: 14px 18px;
+  }
+  nav.site-nav {
+    gap: 14px;
+    font-size: 14px;
+  }
+  main {
+    padding: 36px 18px 64px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .lede {
+    font-size: 17px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 44px 0 12px;
+  }
+  body {
+    font-size: 16px;
+  }
+}
+
+/* ----- Print ----------------------------------------------- */
+
+@media print {
+  header.site-header,
+  footer.site-footer,
+  .card-arrow {
+    display: none;
+  }
+  body {
+    background: white;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  main {
+    max-width: 100%;
+    padding: 0;
+  }
+  h1 {
+    font-size: 22pt;
+  }
+  h2 {
+    font-size: 14pt;
+    margin-top: 24pt;
+  }
+  h3 {
+    font-size: 12pt;
+  }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
