@@ -28,8 +28,8 @@
   <h1>Privacy Policy</h1>
 
   <div class="dates">
-    <strong>Last updated:</strong> May 25, 2026 &nbsp;·&nbsp;
-    <strong>Effective:</strong> May 25, 2026
+    <strong>Last updated:</strong> June 16, 2026 &nbsp;·&nbsp;
+    <strong>Effective:</strong> June 16, 2026
   </div>
 
   <p>This Privacy Policy explains what information <strong>Nora</strong> ("we", "us", "our", "the app") collects, how that information is used, and the choices you have. It applies to the Nora iOS application available on the Apple App Store and to any related screens and services we operate.</p>
@@ -95,6 +95,46 @@
     <li>The contents of your iOS Photos library</li>
     <li>Browsing history, cookies, or cross-app tracking identifiers</li>
     <li>Any data sold to advertisers — <strong>we do not sell personal data.</strong></li>
+  </ul>
+
+  <h3 id="face-data">3.6 Face data — important disclosure</h3>
+  <p>Nora processes selfies that contain your face. We want to be explicit about exactly what we do and do not do with face data, so that you can make an informed decision before tapping "Agree &amp; Continue."</p>
+
+  <p><strong>What face data Nora processes:</strong></p>
+  <ul>
+    <li>The selfie image you choose. Nothing more. We do not extract face landmarks, do not run face-recognition, do not build a face embedding or biometric template, and do not use Apple's Vision framework, ARKit FaceID, or any biometric API on your photo.</li>
+    <li>Nora does not identify you, authenticate you, or recognize you by face. The app treats your selfie as a generic image input that an AI model edits — the same way a photo-editing app would.</li>
+  </ul>
+
+  <p><strong>How it's used:</strong></p>
+  <ul>
+    <li>The selfie is sent to <strong>Google's Gemini AI</strong> (specifically the Gemini image-editing model accessed via Firebase AI Logic) at the moment you tap "Apply", together with the hairstyle reference image and a text prompt. Google's AI generates a new image showing your hairstyle replaced. That single generated image is returned to Nora.</li>
+  </ul>
+
+  <p><strong>Who it's shared with:</strong></p>
+  <ul>
+    <li><strong>Google</strong>, and only Google, at the moment of generation. The data is processed according to Google's privacy terms (see section 7). No other third party — not advertising networks, not analytics SDKs, not marketing platforms — ever receives your selfie or any generated image.</li>
+  </ul>
+
+  <p><strong>Where it's stored:</strong></p>
+  <ul>
+    <li><strong>Nowhere on Nora's servers.</strong> Nora does not have a database of selfies; we do not write your face image to Firebase Storage, Firestore, or any other Nora-owned backend.</li>
+    <li><strong>On Google's side</strong>, the image flows through Google's request pipeline transiently. Google has stated that prompts and images sent to its AI Developer API may be used to improve Google's services unless you are on an opted-out paid tier. We mitigate this for you by sending only the minimum data needed for a single generation, never attaching identifying metadata, and using anonymous Firebase Auth so requests are not linked to a name or email.</li>
+    <li><strong>On your device</strong>, the selfie lives in app memory only while the editor is open. The moment you discard a generated result, leave the editor, or close the app, iOS reclaims that memory.</li>
+  </ul>
+
+  <p><strong>How long it's retained:</strong></p>
+  <ul>
+    <li><strong>By Nora: zero.</strong> The selfie is never persisted to disk by the app. Memory holds it only during one editor session.</li>
+    <li><strong>By Google:</strong> governed by Google's own retention policy for AI Developer API requests.</li>
+    <li><strong>By Apple Photos (only if you tap Save):</strong> a copy of the generated image is written to your iOS Photos library if and only if you explicitly tap the "Save" button. The original selfie is never written to your Photos library by Nora.</li>
+  </ul>
+
+  <p><strong>Your control:</strong></p>
+  <ul>
+    <li>You see the Generate AI Content modal before your very first generation. It explicitly names Google as the recipient. If you tap Cancel, no data leaves your device.</li>
+    <li>You can revoke camera or photo-library permission at any time in iOS Settings → Privacy → Photos / Camera → Nora.</li>
+    <li>You can request deletion of your records at any time by emailing <a href="mailto:norahairapp@gmail.com">norahairapp@gmail.com</a> (see section 8).</li>
   </ul>
 
   <h2 id="how-we-use">4. How we use the information</h2>
