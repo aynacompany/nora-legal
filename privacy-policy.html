@@ -28,8 +28,8 @@
   <h1>Privacy Policy</h1>
 
   <div class="dates">
-    <strong>Last updated:</strong> June 16, 2026 &nbsp;·&nbsp;
-    <strong>Effective:</strong> June 16, 2026
+    <strong>Last updated:</strong> June 17, 2026 &nbsp;·&nbsp;
+    <strong>Effective:</strong> June 17, 2026
   </div>
 
   <p>This Privacy Policy explains what information <strong>Nora</strong> ("we", "us", "our", "the app") collects, how that information is used, and the choices you have. It applies to the Nora iOS application available on the Apple App Store and to any related screens and services we operate.</p>
@@ -119,8 +119,17 @@
   <p><strong>Where it's stored:</strong></p>
   <ul>
     <li><strong>Nowhere on Nora's servers.</strong> Nora does not have a database of selfies; we do not write your face image to Firebase Storage, Firestore, or any other Nora-owned backend.</li>
-    <li><strong>On Google's side</strong>, the image flows through Google's request pipeline transiently. Google has stated that prompts and images sent to its AI Developer API may be used to improve Google's services unless you are on an opted-out paid tier. We mitigate this for you by sending only the minimum data needed for a single generation, never attaching identifying metadata, and using anonymous Firebase Auth so requests are not linked to a name or email.</li>
+    <li><strong>On Google's side</strong>, the image is processed through Google's Gemini API. Because Nora uses Google's paid tier (via the Firebase Blaze plan with billing enabled), Google's terms explicitly state that Google does NOT use your selfie or our prompts to train AI models or improve Google's products. See <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener">Google's billing documentation</a> and <a href="https://ai.google.dev/gemini-api/docs/zdr" target="_blank" rel="noopener">zero-data-retention documentation</a> for confirmation.</li>
     <li><strong>On your device</strong>, the selfie lives in app memory only while the editor is open. The moment you discard a generated result, leave the editor, or close the app, iOS reclaims that memory.</li>
+  </ul>
+
+  <p><strong>Google's retention practice (in Google's own infrastructure):</strong></p>
+  <ul>
+    <li><strong>No training use.</strong> As above: Google does not use your prompts or images to train, fine-tune, or improve its AI models on the paid tier that Nora uses.</li>
+    <li><strong>Abuse-monitoring logs.</strong> Google retains prompts and responses for a limited period solely to detect violations of Google's Prohibited Use Policy, then deletes them. This is the same anti-abuse posture every major hosted AI provider applies. Nora does not have access to these logs.</li>
+    <li><strong>In-memory caching.</strong> Google caches data in RAM (never on disk) for up to 24 hours to reduce latency. Cache contents are isolated to the Nora project and discarded after the TTL.</li>
+    <li><strong>No grounding, no session resumption, no explicit context caching.</strong> Nora does not use Gemini features that would extend retention (Google Search grounding, Maps grounding, Live API session resumption, or <code>cached_content</code>). Our requests are one-shot generations only.</li>
+    <li><strong>No advertising use.</strong> Google does not use Gemini API prompts or responses for advertising or to personalize ads.</li>
   </ul>
 
   <p><strong>How long it's retained:</strong></p>
@@ -178,13 +187,21 @@
     <li><strong>Apple</strong> (App Store, iCloud, Photos) — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></li>
     <li><strong>RevenueCat</strong> (subscription management) — <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></li>
   </ul>
-  <p>Google has stated that prompts and images sent to its AI Developer API may be used to improve Google's services unless you are on a paid tier that opts you out. We mitigate this for you by:</p>
+  <p>Nora uses Google's <strong>paid Gemini API tier</strong> (via the Firebase Blaze plan with billing enabled). On the paid tier, Google's terms explicitly state that Google does <strong>not</strong> use your prompts or images to train or improve its AI models. Google retains data only briefly for abuse monitoring (per their Prohibited Use Policy) and maintains a 24-hour in-memory cache for performance, with no at-rest storage.</p>
+
+  <p>See Google's documentation directly:</p>
+  <ul>
+    <li>Paid-tier billing terms: <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener">ai.google.dev/gemini-api/docs/billing</a></li>
+    <li>Data retention details: <a href="https://ai.google.dev/gemini-api/docs/zdr" target="_blank" rel="noopener">ai.google.dev/gemini-api/docs/zdr</a></li>
+  </ul>
+
+  <p>Additional safeguards we apply on the Nora side:</p>
   <ul>
     <li>Never sending more than the minimum data needed for one generation</li>
     <li>Not attaching identifying metadata to API requests</li>
     <li>Using anonymous Firebase Auth, so the UID associated with the request is not linked to your name or email</li>
+    <li>Not using Gemini features that would extend retention (grounding, Live API session resumption, explicit context caching)</li>
   </ul>
-  <p>If this trade-off is not acceptable to you, please do not use Nora.</p>
 
   <h2 id="your-rights">8. Your rights</h2>
   <p>Depending on where you live (e.g., EEA, UK, California), you may have the right to:</p>
