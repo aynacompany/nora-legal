@@ -1,8 +1,8 @@
 # Nora — Terms & Conditions
 
-**Last updated:** May 25, 2026
+**Last updated:** September 6, 2026
 
-**Effective date:** May 25, 2026
+**Effective date:** September 6, 2026
 
 These Terms & Conditions ("**Terms**") govern your use of the **Nora**
 iOS application and any related screens and services we provide (the
@@ -152,8 +152,12 @@ You agree not to:
 
 ### 6.1 Free and premium tiers
 
-Nora offers core hairstyle preview functionality for free. Certain
-features may be reserved for **Nora Premium**, a paid subscription
+Nora includes a limited free tier: your first three hairstyle
+generations are free. The allowance is granted once per device and
+does not reset — reinstalling Nora does not restore it.
+
+Continued hairstyle generation, hair recolor, Ask Nora, and
+watermark-free saving require **Nora Premium**, a paid subscription
 purchased through the Apple App Store.
 
 ### 6.2 Auto-renewing subscriptions
