@@ -215,7 +215,7 @@
     <li>A record of specific actions, each identified by a fixed name we wrote ourselves — for example that onboarding finished, that a hairstyle generation started, succeeded or failed, that the subscription screen was shown and which situation triggered it, that a subscription was purchased, restored or cancelled at the payment sheet, that a look was saved, that a question was sent to Ask Nora, or that an in-app announcement of new features was shown, acted on or dismissed.</li>
     <li>A small number of details attached to those actions: the catalog identifier of the hairstyle or hair color involved (for example <code>knotless_braids_medium</code> or <code>honey_blonde</code>), whether you currently hold a subscription, how many free generations you have used, how long a generation took, and the price and currency of a completed purchase.</li>
     <li>The same anonymous app user identifier that RevenueCat uses, so that subscription activity and app usage can be understood as belonging to one installation rather than two unrelated ones.</li>
-    <li>Standard device and app metadata that the Mixpanel SDK reports by default, such as device model, operating system version, and app version.</li>
+    <li>Standard device and app metadata that the Mixpanel SDK reports by default, such as device model, operating system version, app version, and approximate region inferred from your IP address.</li>
   </ul>
 
   <p><strong>What Mixpanel does NOT receive:</strong></p>
@@ -225,7 +225,6 @@
     <li>The text of anything you type into Ask Nora, or the replies you receive</li>
     <li>Your name, email address, phone number, or Apple ID</li>
     <li>Your device advertising identifier (IDFA). Mixpanel is not an advertising service and performs no cross-app tracking, which is why it is not covered by the App Tracking Transparency prompt.</li>
-    <li>Your location. Analytics providers commonly infer an approximate city or region from the IP address a request arrives on. We have switched that off, so Mixpanel stores no location for you at any level of precision.</li>
     <li>Screen recordings. Mixpanel offers a "Session Replay" feature that records what appears on screen. We have deliberately <strong>not</strong> enabled it, because Nora displays your selfie and images of your face, and we are not willing to transmit those frames to an analytics provider.</li>
   </ul>
 
