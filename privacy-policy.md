@@ -378,8 +378,8 @@ separately here.
   that subscription activity and app usage can be understood as
   belonging to one installation rather than two unrelated ones.
 - Standard device and app metadata that the Mixpanel SDK reports by
-  default, such as device model, operating system version, app
-  version, and approximate region inferred from your IP address.
+  default, such as device model, operating system version, and app
+  version.
 
 **What Mixpanel does NOT receive:**
 
@@ -391,6 +391,10 @@ separately here.
 - Your device advertising identifier (IDFA). Mixpanel is not an
   advertising service and performs no cross-app tracking, which is
   why it is not covered by the App Tracking Transparency prompt.
+- Your location. Analytics providers commonly infer an approximate
+  city or region from the IP address a request arrives on. We have
+  switched that off, so Mixpanel stores no location for you at any
+  level of precision.
 - Screen recordings. Mixpanel offers a "Session Replay" feature that
   records what appears on screen. We have deliberately **not**
   enabled it, because Nora displays your selfie and images of your
