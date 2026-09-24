@@ -1,17 +1,17 @@
 # Nora — Terms & Conditions
 
-**Last updated:** September 6, 2026
+**Last updated:** September 23, 2026
 
-**Effective date:** September 6, 2026
+**Effective date:** September 23, 2026
 
 These Terms & Conditions ("**Terms**") govern your use of the **Nora**
 iOS application and any related screens and services we provide (the
 "**Service**"). By downloading, installing, or using Nora, you agree to
 these Terms. If you do not agree, please do not use Nora.
 
-Nora is operated by **[LEGAL ENTITY NAME], [LEGAL ENTITY ADDRESS]**
-("**we**", "**us**", "**our**"). You can contact us at
-**support@nora.app**.
+Nora is operated by **Chuka Ufomadu, 7901 4th St N STE 300, St.
+Petersburg, FL 33702, USA** ("**we**", "**us**", "**our**"). You can
+contact us at **norahairapp@gmail.com**.
 
 ---
 
@@ -216,11 +216,14 @@ royalty-free, worldwide license to use it without obligation to you.
 
 ## 8. Third-party services
 
-Nora relies on services provided by Google (Firebase and AI) and
-Apple (App Store, iCloud, Photos). Your use of those services is
-governed by the respective providers' own terms and privacy policies.
-We are not responsible for the acts or omissions of these third
-parties beyond the scope of our own Service.
+Nora relies on services provided by Google (Firebase and AI), Apple
+(App Store, iCloud, Photos), RevenueCat (subscription management),
+AppsFlyer (marketing attribution), and Mixpanel (product analytics).
+Your use of those services is governed by the respective providers'
+own terms and privacy policies. What each of them receives, and what
+they do not, is set out in our Privacy Policy. We are not responsible
+for the acts or omissions of these third parties beyond the scope of
+our own Service.
 
 ---
 
@@ -306,11 +309,12 @@ and 15).
 
 ## 14. Governing law and disputes
 
-These Terms are governed by the laws of **[STATE / COUNTRY]**, without
-regard to its conflict-of-law rules. You agree that any dispute
-arising out of or relating to these Terms or the Service will be
-brought exclusively in the courts of **[COUNTY / DISTRICT, STATE /
-COUNTRY]**, and you consent to the jurisdiction of those courts.
+These Terms are governed by the laws of the **State of Florida,
+USA**, without regard to its conflict-of-law rules. You agree that
+any dispute arising out of or relating to these Terms or the Service
+will be brought exclusively in the state or federal courts located
+in **Pinellas County, Florida, USA**, and you consent to the
+jurisdiction of those courts.
 
 If you live in the European Union, the United Kingdom, or any other
 jurisdiction whose law provides you with consumer protections that
@@ -367,6 +371,6 @@ accept the updated terms.
 
 Questions, complaints, or formal notices under these Terms:
 
-**[LEGAL ENTITY NAME]**
-**[LEGAL ENTITY ADDRESS]**
-**support@nora.app**
+**Chuka Ufomadu**
+**7901 4th St N STE 300, St. Petersburg, FL 33702, USA**
+**norahairapp@gmail.com**

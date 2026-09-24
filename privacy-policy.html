@@ -28,8 +28,8 @@
   <h1>Privacy Policy</h1>
 
   <div class="dates">
-    <strong>Last updated:</strong> August 4, 2026 &nbsp;·&nbsp;
-    <strong>Effective:</strong> August 4, 2026
+    <strong>Last updated:</strong> September 23, 2026 &nbsp;·&nbsp;
+    <strong>Effective:</strong> September 23, 2026
   </div>
 
   <p>This Privacy Policy explains what information <strong>Nora</strong> ("we", "us", "our", "the app") collects, how that information is used, and the choices you have. It applies to the Nora iOS application available on the Apple App Store and to any related screens and services we operate.</p>
@@ -49,6 +49,7 @@
     <li><strong>Google's AI service</strong> (a generative-AI image-editing model) to produce the previewed hairstyle from your selfie and a hairstyle reference</li>
     <li><strong>RevenueCat</strong> for managing your subscription state across devices, matching App Store receipts to entitlements, and powering the "Restore Purchases" flow</li>
     <li><strong>AppsFlyer</strong> for measuring which advertising campaigns (for example on TikTok) drove new Nora installs and paid subscriptions, so we can decide where to invest our marketing budget. AppsFlyer only receives your device advertising identifier if you agree to the iOS App Tracking Transparency prompt (see section 3.7)</li>
+    <li><strong>Mixpanel</strong> for product analytics — understanding which features people use and where they get stuck, so we can improve the app. Mixpanel receives records of actions you take in Nora (for example "a hairstyle was generated" or "the subscription screen was shown"), never your selfies, your generated images, or anything you type into Ask Nora (see section 3.8)</li>
   </ul>
   <p>Sections 3–5 describe what information is involved in each step and how we treat it.</p>
 
@@ -81,6 +82,7 @@
     <li><strong>Diagnostic logs.</strong> Locally-written logs on your device used for debugging (e.g., "save tap", "generation succeeded"). These do not leave your device unless you opt in to share diagnostic information with us via support.</li>
     <li><strong>Advertising identifier (only with your ATT consent).</strong> If you agree to the iOS App Tracking Transparency prompt shown during onboarding, Nora shares your device advertising identifier (IDFA) with <strong>AppsFlyer</strong>, our mobile-measurement partner. AppsFlyer uses this to determine whether your Nora install was driven by an advertisement you saw in another app (for example TikTok). If you decline the ATT prompt, no IDFA is shared and attribution runs through Apple's privacy-preserving SKAdNetwork framework instead, which shares only anonymized, aggregated conversion data with the ad network. See section 3.7 for the full disclosure.</li>
     <li><strong>Attribution and session data.</strong> AppsFlyer collects standard mobile-attribution signals: install timestamp, session events (app opens), country and language, device model, and iOS version. When you start a free trial or purchase a subscription, RevenueCat forwards that event (including revenue value) to AppsFlyer via a server-to-server integration so we can attribute the conversion back to the ad campaign that drove your install.</li>
+    <li><strong>Product analytics events.</strong> Nora sends <strong>Mixpanel</strong> a record of certain actions you take in the app — for example that a hairstyle generation started, succeeded or failed, that the subscription screen was shown and why, that a subscription was purchased or restored, or that a look was saved. Each record carries the catalog identifier of the style involved, whether you are a subscriber, and how long a generation took. It never carries your selfie, your generated image, the text of an Ask Nora message, or any identifier that would let Mixpanel recognise you in another app. See section 3.8 for the full disclosure.</li>
   </ul>
 
   <h3 id="info-device-only">3.4 Information stored on your device only</h3>
@@ -205,6 +207,36 @@
     <li>Apple's SKAdNetwork documentation: <a href="https://developer.apple.com/documentation/storekit/skadnetwork" target="_blank" rel="noopener">developer.apple.com/documentation/storekit/skadnetwork</a></li>
   </ul>
 
+  <h3 id="product-analytics">3.8 Product analytics — important disclosure</h3>
+  <p>Nora uses <strong>Mixpanel</strong> to understand how the app is actually used — which features people reach, where they run into trouble, and how often generations fail. Because this is a different activity from the advertising attribution described in section 3.7, we describe it separately here.</p>
+
+  <p><strong>What Mixpanel receives:</strong></p>
+  <ul>
+    <li>A record of specific actions, each identified by a fixed name we wrote ourselves — for example that onboarding finished, that a hairstyle generation started, succeeded or failed, that the subscription screen was shown and which situation triggered it, that a subscription was purchased, restored or cancelled at the payment sheet, that a look was saved, or that a question was sent to Ask Nora.</li>
+    <li>A small number of details attached to those actions: the catalog identifier of the hairstyle involved (for example <code>knotless_braids_medium</code>), whether you currently hold a subscription, how many free generations you have used, how long a generation took, and the price and currency of a completed purchase.</li>
+    <li>The same anonymous app user identifier that RevenueCat uses, so that subscription activity and app usage can be understood as belonging to one installation rather than two unrelated ones.</li>
+    <li>Standard device and app metadata that the Mixpanel SDK reports by default, such as device model, operating system version, app version, and approximate region inferred from your IP address.</li>
+  </ul>
+
+  <p><strong>What Mixpanel does NOT receive:</strong></p>
+  <ul>
+    <li>Your selfie, or any image at all</li>
+    <li>Any generated hairstyle preview</li>
+    <li>The text of anything you type into Ask Nora, or the replies you receive</li>
+    <li>Your name, email address, phone number, or Apple ID</li>
+    <li>Your device advertising identifier (IDFA). Mixpanel is not an advertising service and performs no cross-app tracking, which is why it is not covered by the App Tracking Transparency prompt.</li>
+    <li>Screen recordings. Mixpanel offers a "Session Replay" feature that records what appears on screen. We have deliberately <strong>not</strong> enabled it, because Nora displays your selfie and images of your face, and we are not willing to transmit those frames to an analytics provider.</li>
+  </ul>
+
+  <p><strong>How it is used:</strong> only to improve the product — for example, to see that a step in onboarding loses people, or that one hairstyle fails to generate more often than others. It is not used to build advertising profiles, and it is never sold.</p>
+
+  <p><strong>Retention:</strong> Mixpanel retains event data under our project's retention configuration and its own policies. You can request deletion of your analytics record by emailing <a href="mailto:norahairapp@gmail.com">norahairapp@gmail.com</a>, and we will action it with Mixpanel on your behalf.</p>
+
+  <p><strong>Where to read more:</strong></p>
+  <ul>
+    <li>Mixpanel's privacy policy: <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener">mixpanel.com/legal/privacy-policy</a></li>
+  </ul>
+
   <h2 id="how-we-use">4. How we use the information</h2>
   <p>We use the information described in section 3 to:</p>
   <ul>
@@ -214,6 +246,7 @@
     <li>Diagnose crashes and fix bugs</li>
     <li>Communicate with you when you proactively contact us</li>
     <li>Measure the effectiveness of our marketing (for example, which advertising campaign drove which install or subscription) so we can decide where to invest budget — see section 3.7 for the attribution disclosure</li>
+    <li>Understand how the app is used so we can improve it — for example which features get reached and where people run into difficulty — see section 3.8 for the product-analytics disclosure</li>
     <li>Comply with legal obligations and protect against fraud or abuse</li>
   </ul>
   <p>We do <strong>not</strong> use your selfie, your generated images, or your saved Lookbook entries to train our own AI models. We do not have an AI training pipeline of our own; generation is performed by Google's AI model on Google's infrastructure.</p>
@@ -226,6 +259,7 @@
     <li><strong>RevenueCat</strong> — We share your anonymous app user ID and the App Store receipt for any subscription purchase with RevenueCat so they can verify entitlements, sync subscription state across your devices, and power "Restore Purchases". RevenueCat does not receive your selfie, generated images, or any data about hairstyles you try on.</li>
     <li><strong>AppsFlyer</strong> — For users who consent to the iOS App Tracking Transparency prompt, we share your device advertising identifier (IDFA), install and session data, standard device metadata, and (via RevenueCat's server-to-server integration) subscription-lifecycle events with AppsFlyer so they can attribute your install and subscription to a marketing campaign. For users who decline the ATT prompt, only aggregated, anonymized SKAdNetwork data is exchanged. AppsFlyer does not receive your selfie, generated images, hairstyle choices, or any Nora-specific content. See section 3.7 for the full attribution disclosure.</li>
     <li><strong>TikTok (and any other ad networks we advertise on)</strong> — Through Apple's SKAdNetwork framework and AppsFlyer's server-to-server postback pipeline, aggregated, campaign-level conversion signals (e.g., "an install occurred following campaign #123") are delivered to the ad networks we advertise on. No individual user data, IDFA, or Nora-specific content is shared with ad networks through this pathway.</li>
+    <li><strong>Mixpanel</strong> — We share records of in-app actions (such as a generation starting or the subscription screen being shown), the catalog identifier of the hairstyle involved, your subscription status, the price and currency of a completed purchase, your anonymous app user ID, and standard device metadata, so we can analyse how Nora is used and improve it. Mixpanel does not receive your selfie, your generated images, the contents of Ask Nora messages, or your advertising identifier, and we have not enabled its screen-recording feature. See section 3.8 for the full product-analytics disclosure.</li>
     <li><strong>Our email provider</strong> — Anything you type into the Contact Us form is delivered to our support inbox so we can respond to you.</li>
     <li><strong>Authorities (when legally required)</strong> — Information we hold may be disclosed if we are compelled to do so by valid legal process.</li>
   </ul>
@@ -239,6 +273,7 @@
     <li><strong>Lookbook entries:</strong> kept on your device until you delete them in the app's Lookbook tab.</li>
     <li><strong>Anonymous Firebase UID:</strong> kept for as long as you have Nora installed. Reinstalling Nora resets it.</li>
     <li><strong>Attribution data (AppsFlyer):</strong> Install and event data is retained by AppsFlyer under its own retention schedule, generally 12–24 months at the aggregate level. Data tied to your IDFA is removed on request or automatically when you revoke ATT permission in iOS Settings. SKAdNetwork data is not retained at the device level because SKAdNetwork does not deliver device-level data.</li>
+    <li><strong>Product analytics (Mixpanel):</strong> Event records are retained under our Mixpanel project's data-retention configuration and Mixpanel's own schedule. Because the events are tied to your anonymous app user ID rather than to you personally, reinstalling Nora starts a new record. You can request deletion at any time by emailing <a href="mailto:norahairapp@gmail.com">norahairapp@gmail.com</a>.</li>
     <li><strong>Contact emails:</strong> kept by our support inbox until the matter is resolved, then archived for up to 24 months for audit purposes.</li>
   </ul>
 
@@ -250,6 +285,7 @@
     <li><strong>Apple</strong> (App Store, iCloud, Photos) — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></li>
     <li><strong>RevenueCat</strong> (subscription management) — <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></li>
     <li><strong>AppsFlyer</strong> (mobile attribution / marketing measurement) — <a href="https://www.appsflyer.com/legal/services-privacy-policy/" target="_blank" rel="noopener">appsflyer.com/legal/services-privacy-policy</a></li>
+    <li><strong>Mixpanel</strong> (product analytics) — <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener">mixpanel.com/legal/privacy-policy</a></li>
     <li><strong>TikTok</strong> (advertising network, via SKAdNetwork and AppsFlyer postbacks) — <a href="https://www.tiktok.com/legal/page/global/privacy-policy/en" target="_blank" rel="noopener">tiktok.com/legal/page/global/privacy-policy/en</a></li>
   </ul>
   <p>Nora uses Google's <strong>paid Gemini API tier</strong> (via the Firebase Blaze plan with billing enabled). On the paid tier, Google's terms explicitly state that Google does <strong>not</strong> use your prompts or images to train or improve its AI models. Google retains data only briefly for abuse monitoring (per their Prohibited Use Policy) and maintains a 24-hour in-memory cache for performance, with no at-rest storage.</p>

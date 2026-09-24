@@ -1,8 +1,8 @@
 # Nora — Privacy Policy
 
-**Last updated:** May 25, 2026
+**Last updated:** September 23, 2026
 
-**Effective date:** May 25, 2026
+**Effective date:** September 23, 2026
 
 This Privacy Policy explains what information **Nora** ("we", "us", "our",
 "the app") collects, how that information is used, and the choices you
@@ -18,12 +18,13 @@ exactly what that means in practice.
 
 ## 1. Who we are
 
-Nora is operated by **[LEGAL ENTITY NAME], [LEGAL ENTITY ADDRESS]** (the
-"company", "we"). If you have questions about this policy, you can
-reach us at **support@nora.app**.
+Nora is operated by **Chuka Ufomadu, 7901 4th St N STE 300, St.
+Petersburg, FL 33702, USA** (the "company", "we"). If you have
+questions about this policy, you can reach us at
+**norahairapp@gmail.com**.
 
 For the purposes of the EU General Data Protection Regulation (GDPR)
-and the UK GDPR, **[LEGAL ENTITY NAME]** is the data controller of any
+and the UK GDPR, **Chuka Ufomadu** is the data controller of any
 personal information we collect through Nora.
 
 ---
@@ -44,6 +45,20 @@ To make this possible we use:
   services such as App Check
 - **Google's AI service** (a generative-AI image-editing model) to produce
   the previewed hairstyle from your selfie and a hairstyle reference
+- **RevenueCat** for managing your subscription state across devices,
+  matching App Store receipts to entitlements, and powering the
+  "Restore Purchases" flow
+- **AppsFlyer** for measuring which advertising campaigns (for example
+  on TikTok) drove new Nora installs and paid subscriptions, so we can
+  decide where to invest our marketing budget. AppsFlyer only receives
+  your device advertising identifier if you agree to the iOS App
+  Tracking Transparency prompt (see section 3.7)
+- **Mixpanel** for product analytics — understanding which features
+  people use and where they get stuck, so we can improve the app.
+  Mixpanel receives records of actions you take in Nora (for example
+  "a hairstyle was generated" or "the subscription screen was shown"),
+  never your selfies, your generated images, or anything you type
+  into Ask Nora (see section 3.8)
 
 Sections 3–5 describe what information is involved in each step and
 how we treat it.
@@ -93,6 +108,33 @@ how we treat it.
   debugging (e.g., "save tap", "generation succeeded"). These do not
   leave your device unless you opt in to share diagnostic information
   with us via support.
+- **Advertising identifier (only with your ATT consent).** If you
+  agree to the iOS App Tracking Transparency prompt shown during
+  onboarding, Nora shares your device advertising identifier (IDFA)
+  with **AppsFlyer**, our mobile-measurement partner. AppsFlyer uses
+  this to determine whether your Nora install was driven by an
+  advertisement you saw in another app (for example TikTok). If you
+  decline the ATT prompt, no IDFA is shared and attribution runs
+  through Apple's privacy-preserving SKAdNetwork framework instead,
+  which shares only anonymized, aggregated conversion data with the
+  ad network. See section 3.7 for the full disclosure.
+- **Attribution and session data.** AppsFlyer collects standard
+  mobile-attribution signals: install timestamp, session events (app
+  opens), country and language, device model, and iOS version. When
+  you start a free trial or purchase a subscription, RevenueCat
+  forwards that event (including revenue value) to AppsFlyer via a
+  server-to-server integration so we can attribute the conversion
+  back to the ad campaign that drove your install.
+- **Product analytics events.** Nora sends **Mixpanel** a record of
+  certain actions you take in the app — for example that a hairstyle
+  generation started, succeeded or failed, that the subscription
+  screen was shown and why, that a subscription was purchased or
+  restored, or that a look was saved. Each record carries the
+  catalog identifier of the style involved, whether you are a
+  subscriber, and how long a generation took. It never carries your
+  selfie, your generated image, the text of an Ask Nora message, or
+  any identifier that would let Mixpanel recognise you in another
+  app. See section 3.8 for the full disclosure.
 
 ### 3.4 Information stored on your device only
 
@@ -116,8 +158,257 @@ how we treat it.
 - Photos other than the selfie you explicitly hand to the editor for
   a single generation pass
 - The contents of your iOS Photos library
-- Browsing history, cookies, or cross-app tracking identifiers
+- Browsing history or web cookies
+- Any cross-app tracking identifier *unless you explicitly opt in
+  via the iOS App Tracking Transparency prompt* — see section 3.7
+  for the full attribution disclosure
 - Any data sold to advertisers — **we do not sell personal data.**
+
+### 3.6 Face data — important disclosure
+
+Nora processes selfies that contain your face. We want to be
+explicit about exactly what we do and do not do with face data, so
+that you can make an informed decision before tapping "Agree &
+Continue."
+
+**What face data Nora processes:**
+
+- The selfie image you choose. Nothing more. We do not extract
+  face landmarks, do not run face-recognition, do not build a face
+  embedding or biometric template, and do not use Apple's Vision
+  framework, ARKit FaceID, or any biometric API on your photo.
+- Nora does not identify you, authenticate you, or recognize you
+  by face. The app treats your selfie as a generic image input
+  that an AI model edits — the same way a photo-editing app would.
+
+**How it's used:**
+
+- The selfie is sent to **Google's Gemini AI** (specifically the
+  Gemini image-editing model accessed via Firebase AI Logic) at
+  the moment you tap "Apply", together with the hairstyle reference
+  image and a text prompt. Google's AI generates a new image
+  showing your hairstyle replaced. That single generated image is
+  returned to Nora.
+
+**Who it's shared with:**
+
+- **Google**, and only Google, at the moment of generation. The
+  data is processed according to Google's privacy terms (see
+  section 7). No other third party — not advertising networks,
+  not analytics SDKs, not marketing platforms — ever receives your
+  selfie or any generated image.
+
+**Where it's stored:**
+
+- **Nowhere on Nora's servers.** Nora does not have a database
+  of selfies; we do not write your face image to Firebase Storage,
+  Firestore, or any other Nora-owned backend.
+- **On Google's side**, the image is processed through Google's
+  Gemini API. Because Nora uses Google's paid tier (via the
+  Firebase Blaze plan with billing enabled), Google's terms
+  explicitly state that Google does NOT use your selfie or our
+  prompts to train AI models or improve Google's products. See
+  https://ai.google.dev/gemini-api/docs/billing for confirmation
+  and https://ai.google.dev/gemini-api/docs/zdr for the full data-
+  handling policy.
+- **On your device**, the selfie lives in app memory only while
+  the editor is open. The moment you discard a generated result,
+  leave the editor, or close the app, iOS reclaims that memory.
+
+**Google's retention practice (in Google's own infrastructure):**
+
+- **No training use.** As above: Google does not use your
+  prompts or images to train, fine-tune, or improve its AI
+  models on the paid tier that Nora uses.
+- **Abuse-monitoring logs.** Google retains prompts and
+  responses for a limited period solely to detect violations of
+  Google's Prohibited Use Policy, then deletes them. This is
+  the same anti-abuse posture every major hosted AI provider
+  applies. Nora does not have access to these logs.
+- **In-memory caching.** Google caches data in RAM (never on
+  disk) for up to 24 hours to reduce latency. Cache contents
+  are isolated to the Nora project and discarded after the TTL.
+- **No grounding, no session resumption, no explicit context
+  caching.** Nora does not use Gemini features that would
+  extend retention (Google Search grounding, Maps grounding,
+  Live API session resumption, or `cached_content`). Our
+  requests are one-shot generations only.
+- **No advertising use.** Google does not use Gemini API
+  prompts or responses for advertising or to personalize ads.
+
+**How long it's retained:**
+
+- **By Nora: zero.** The selfie is never persisted to disk by
+  the app. Memory holds it only during one editor session.
+- **By Google:** governed by Google's own retention policy for
+  AI Developer API requests.
+- **By Apple Photos (only if you tap Save):** a copy of the
+  generated image is written to your iOS Photos library if and
+  only if you explicitly tap the "Save" button. The original
+  selfie is never written to your Photos library by Nora.
+
+**Your control:**
+
+- You see the Generate AI Content modal before your very first
+  generation. It explicitly names Google as the recipient. If
+  you tap Cancel, no data leaves your device.
+- You can revoke camera or photo-library permission at any time
+  in iOS Settings → Privacy → Photos / Camera → Nora.
+- You can request deletion of your records at any time by
+  emailing norahairapp@gmail.com (see section 8).
+
+### 3.7 Attribution & advertising — important disclosure
+
+Nora runs paid marketing campaigns on platforms such as TikTok.
+To know whether those campaigns are working, Nora uses
+**AppsFlyer** as its mobile measurement partner (MMP). This
+section explains, at the same level of detail as our face-data
+disclosure above, exactly what AppsFlyer does and does not
+receive, so you can make an informed choice when the App
+Tracking Transparency (ATT) prompt appears during onboarding.
+
+**What AppsFlyer receives — with your ATT consent:**
+
+- Your device's advertising identifier (**IDFA**), used only for
+  matching your install to the ad that drove it.
+- Install timestamp, session events (app launches), country,
+  language, device model, and iOS version.
+- Subscription lifecycle events (free-trial start, subscription
+  purchase, and the revenue value of each purchase) forwarded
+  from RevenueCat via a server-to-server integration, so we
+  can measure return on ad spend.
+
+**What AppsFlyer receives — without your ATT consent:**
+
+- **No IDFA.** If you tap "Ask App Not to Track", the SDK never
+  obtains your advertising identifier.
+- Attribution falls back to Apple's **SKAdNetwork** framework,
+  which reports only aggregated, anonymized conversion signals
+  to the ad network. These aggregated signals cannot be tied
+  back to your device or identity.
+- The other signals in the previous list (install timestamp,
+  session count, device model, subscription events) still flow
+  to AppsFlyer for our own internal analytics, but they are not
+  joined to a cross-app identifier.
+
+**What AppsFlyer does with it:**
+
+- Matches your install to the specific ad campaign that drove
+  it, if any, so we can decide which campaigns to keep running.
+- Forwards aggregated conversion signals (e.g., "an install
+  occurred after ad #123 was shown") to the ad network — for
+  Nora that is primarily **TikTok** — either through SKAdNetwork
+  postbacks or, with ATT consent, through AppsFlyer's server-
+  to-server integration with TikTok. In both pathways, TikTok
+  receives only the campaign-level attribution signal; it never
+  receives your name, email, or selfie.
+- Powers our internal marketing dashboard so we can see, in
+  aggregate, which channels drive Nora subscribers.
+
+**What AppsFlyer does NOT receive:**
+
+- Your selfie or any generated hairstyle image.
+- The contents of your Lookbook.
+- Your name, email address, phone number, or Apple ID.
+- The specific hairstyles or colors you tried on inside Nora.
+- Your Firebase anonymous UID or App Check token.
+- Any information that would let AppsFlyer or an ad network
+  personally identify you.
+
+**Retention:**
+
+- AppsFlyer retains install and event data according to its own
+  retention schedule (generally 12–24 months for aggregated
+  attribution data). See AppsFlyer's privacy policy linked in
+  section 7 for the full schedule.
+- SKAdNetwork data (for users who declined ATT) is not retained
+  by AppsFlyer at the individual-device level because
+  SKAdNetwork does not deliver device-level data in the first
+  place.
+
+**Your control:**
+
+- Nora asks for ATT consent once, during onboarding. You can
+  tap "Ask App Not to Track" and attribution silently falls
+  back to SKAdNetwork with no IDFA sharing.
+- You can change your decision at any time in iOS Settings →
+  Privacy & Security → Tracking → Nora.
+- You can also disable ad tracking system-wide in iOS Settings
+  → Privacy & Security → Tracking ("Allow Apps to Request to
+  Track" off), and Nora will automatically fall back to
+  SKAdNetwork.
+- You can request deletion of your AppsFlyer record by emailing
+  norahairapp@gmail.com. We honor deletion requests directly
+  with AppsFlyer on your behalf.
+
+**Where to read more:**
+
+- AppsFlyer's privacy policy:
+  https://www.appsflyer.com/legal/services-privacy-policy/
+- Apple's App Tracking Transparency documentation:
+  https://developer.apple.com/documentation/apptrackingtransparency
+- Apple's SKAdNetwork documentation:
+  https://developer.apple.com/documentation/storekit/skadnetwork
+
+### 3.8 Product analytics — important disclosure
+
+Nora uses **Mixpanel** to understand how the app is actually used —
+which features people reach, where they run into trouble, and how
+often generations fail. Because this is a different activity from
+the advertising attribution described in section 3.7, we describe it
+separately here.
+
+**What Mixpanel receives:**
+
+- A record of specific actions, each identified by a fixed name we
+  wrote ourselves — for example that onboarding finished, that a
+  hairstyle generation started, succeeded or failed, that the
+  subscription screen was shown and which situation triggered it,
+  that a subscription was purchased, restored or cancelled at the
+  payment sheet, that a look was saved, or that a question was sent
+  to Ask Nora.
+- A small number of details attached to those actions: the catalog
+  identifier of the hairstyle involved (for example
+  `knotless_braids_medium`), whether you currently hold a
+  subscription, how many free generations you have used, how long a
+  generation took, and the price and currency of a completed
+  purchase.
+- The same anonymous app user identifier that RevenueCat uses, so
+  that subscription activity and app usage can be understood as
+  belonging to one installation rather than two unrelated ones.
+- Standard device and app metadata that the Mixpanel SDK reports by
+  default, such as device model, operating system version, app
+  version, and approximate region inferred from your IP address.
+
+**What Mixpanel does NOT receive:**
+
+- Your selfie, or any image at all
+- Any generated hairstyle preview
+- The text of anything you type into Ask Nora, or the replies you
+  receive
+- Your name, email address, phone number, or Apple ID
+- Your device advertising identifier (IDFA). Mixpanel is not an
+  advertising service and performs no cross-app tracking, which is
+  why it is not covered by the App Tracking Transparency prompt.
+- Screen recordings. Mixpanel offers a "Session Replay" feature that
+  records what appears on screen. We have deliberately **not**
+  enabled it, because Nora displays your selfie and images of your
+  face, and we are not willing to transmit those frames to an
+  analytics provider.
+
+**How it is used:** only to improve the product — for example, to
+see that a step in onboarding loses people, or that one hairstyle
+fails to generate more often than others. It is not used to build
+advertising profiles, and it is never sold.
+
+**Retention:** Mixpanel retains event data under our project's
+retention configuration and its own policies. You can request
+deletion of your analytics record by emailing norahairapp@gmail.com,
+and we will action it with Mixpanel on your behalf.
+
+**Where to read more:**
+
+- Mixpanel's privacy policy: https://mixpanel.com/legal/privacy-policy/
 
 ---
 
@@ -130,6 +421,13 @@ We use the information described in section 3 to:
 - Verify that requests come from a real copy of Nora (App Check)
 - Diagnose crashes and fix bugs
 - Communicate with you when you proactively contact us
+- Measure the effectiveness of our marketing (for example, which
+  advertising campaign drove which install or subscription) so we can
+  decide where to invest budget — see section 3.7 for the attribution
+  disclosure
+- Understand how the app is used so we can improve it — for example
+  which features get reached and where people run into difficulty —
+  see section 3.8 for the product-analytics disclosure
 - Comply with legal obligations and protect against fraud or abuse
 
 We do **not** use your selfie, your generated images, or your saved
@@ -143,12 +441,14 @@ AI model on Google's infrastructure.
 
 We share information only in the limited circumstances listed below.
 
-| Recipient                          | What we share                                                            | Why                                              |
-|------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------|
-| **Google (Firebase and AI)**       | Your selfie + reference image + prompt at the moment of generation; anonymous UID and App Check token on every backend request | To run the AI generation and infrastructure      |
-| **Apple**                          | Subscription / receipt information when you purchase Nora Premium       | To process App Store payments and entitlements   |
-| **Our email provider**             | Anything you type into the Contact Us form                              | So we can respond                                |
-| **Authorities** (when legally required) | Information we have, if compelled by valid legal process            | Compliance                                       |
+- **Google (Firebase and AI)** — We share your selfie, the hairstyle reference image, and the prompt at the moment of generation, plus your anonymous UID and App Check token on every backend request. This is so Google can run the AI generation and the supporting infrastructure.
+- **Apple** — When you purchase Nora Premium, your subscription and receipt information are shared with Apple so they can process the App Store payment and entitlement.
+- **RevenueCat** — We share your anonymous app user ID and the App Store receipt for any subscription purchase with RevenueCat so they can verify entitlements, sync subscription state across your devices, and power "Restore Purchases". RevenueCat does not receive your selfie, generated images, or any data about hairstyles you try on.
+- **AppsFlyer** — For users who consent to the iOS App Tracking Transparency prompt, we share your device advertising identifier (IDFA), install and session data, standard device metadata, and (via RevenueCat's server-to-server integration) subscription-lifecycle events with AppsFlyer so they can attribute your install and subscription to a marketing campaign. For users who decline the ATT prompt, only aggregated, anonymized SKAdNetwork data is exchanged. AppsFlyer does not receive your selfie, generated images, hairstyle choices, or any Nora-specific content. See section 3.7 for the full attribution disclosure.
+- **TikTok (and any other ad networks we advertise on)** — Through Apple's SKAdNetwork framework and AppsFlyer's server-to-server postback pipeline, aggregated, campaign-level conversion signals (e.g., "an install occurred following campaign #123") are delivered to the ad networks we advertise on. No individual user data, IDFA, or Nora-specific content is shared with ad networks through this pathway.
+- **Mixpanel** — We share records of in-app actions (such as a generation starting or the subscription screen being shown), the catalog identifier of the hairstyle involved, your subscription status, the price and currency of a completed purchase, your anonymous app user ID, and standard device metadata, so we can analyse how Nora is used and improve it. Mixpanel does not receive your selfie, your generated images, the contents of Ask Nora messages, or your advertising identifier, and we have not enabled its screen-recording feature. See section 3.8 for the full product-analytics disclosure.
+- **Our email provider** — Anything you type into the Contact Us form is delivered to our support inbox so we can respond to you.
+- **Authorities (when legally required)** — Information we hold may be disclosed if we are compelled to do so by valid legal process.
 
 We do **not** sell or rent any personal information.
 
@@ -170,6 +470,19 @@ We do **not** sell or rent any personal information.
   the app's Lookbook tab.
 - **Anonymous Firebase UID:** kept for as long as you have Nora
   installed. Reinstalling Nora resets it.
+- **Attribution data (AppsFlyer):** Install and event data is
+  retained by AppsFlyer under its own retention schedule, generally
+  12–24 months at the aggregate level. Data tied to your IDFA is
+  removed on request or automatically when you revoke ATT
+  permission in iOS Settings. SKAdNetwork data is not retained at
+  the device level because SKAdNetwork does not deliver device-
+  level data.
+- **Product analytics (Mixpanel):** Event records are retained under
+  our Mixpanel project's data-retention configuration and Mixpanel's
+  own schedule. Because the events are tied to your anonymous app
+  user ID rather than to you personally, reinstalling Nora starts a
+  new record. You can request deletion at any time by emailing
+  norahairapp@gmail.com.
 - **Contact emails:** kept by our support inbox until the matter is
   resolved, then archived for up to 24 months for audit purposes.
 
@@ -184,17 +497,36 @@ like more detail:
 - **Google Firebase** — `https://firebase.google.com/support/privacy`
 - **Google AI** — `https://policies.google.com/privacy`
 - **Apple** (App Store, iCloud, Photos) — `https://www.apple.com/legal/privacy/`
+- **RevenueCat** (subscription management) — `https://www.revenuecat.com/privacy`
+- **AppsFlyer** (mobile attribution / marketing measurement) —
+  `https://www.appsflyer.com/legal/services-privacy-policy/`
+- **Mixpanel** (product analytics) —
+  `https://mixpanel.com/legal/privacy-policy/`
+- **TikTok** (advertising network, via SKAdNetwork and AppsFlyer
+  postbacks) —
+  `https://www.tiktok.com/legal/page/global/privacy-policy/en`
 
-Google has stated that prompts and images sent to its AI Developer
-API may be used to improve Google's services unless you are on a paid
-tier that opts you out. We mitigate this for you by:
+Nora uses Google's **paid Gemini API tier** (via the Firebase Blaze
+plan with billing enabled). On the paid tier, Google's terms
+explicitly state that Google does **not** use your prompts or
+images to train or improve its AI models. Google retains data only
+briefly for abuse monitoring (per their Prohibited Use Policy) and
+maintains a 24-hour in-memory cache for performance, with no
+at-rest storage.
+
+See Google's documentation directly:
+
+- Paid-tier billing terms: https://ai.google.dev/gemini-api/docs/billing
+- Data retention details: https://ai.google.dev/gemini-api/docs/zdr
+
+Additional safeguards we apply on the Nora side:
 
 - Never sending more than the minimum data needed for one generation
 - Not attaching identifying metadata to API requests
 - Using anonymous Firebase Auth, so the UID associated with the
   request is not linked to your name or email
-
-If this trade-off is not acceptable to you, please do not use Nora.
+- Not using Gemini features that would extend retention (grounding,
+  Live API session resumption, explicit context caching)
 
 ---
 
@@ -210,10 +542,10 @@ the right to:
 - **Withdraw consent** at any time, where we relied on consent
 - **Lodge a complaint** with a supervisory authority
 
-To exercise these rights, email **support@nora.app**. Because Nora
-links you to an anonymous UID, we may ask you to provide enough context
-(e.g., a recent generation timestamp, your device model, your App
-Store receipt) so we can locate your records.
+To exercise these rights, email **norahairapp@gmail.com**. Because
+Nora links you to an anonymous UID, we may ask you to provide enough
+context (e.g., a recent generation timestamp, your device model, your
+App Store receipt) so we can locate your records.
 
 ---
 
@@ -225,7 +557,7 @@ from anyone in that age group. The in-app photo guide explicitly tells
 users that photos of children are not acceptable input.
 
 If you believe we have inadvertently collected information from a
-minor, please email **support@nora.app** and we will delete it.
+minor, please email **norahairapp@gmail.com** and we will delete it.
 
 ---
 
@@ -274,8 +606,8 @@ accept the updated terms.
 
 Privacy questions, data-rights requests, or anything else:
 
-**[LEGAL ENTITY NAME]**
-**[LEGAL ENTITY ADDRESS]**
-**support@nora.app**
+**Chuka Ufomadu**
+**7901 4th St N STE 300, St. Petersburg, FL 33702, USA**
+**norahairapp@gmail.com**
 
 We typically respond within 24 hours.
