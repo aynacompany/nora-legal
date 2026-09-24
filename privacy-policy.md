@@ -130,8 +130,8 @@ how we treat it.
   generation started, succeeded or failed, that the subscription
   screen was shown and why, that a subscription was purchased or
   restored, or that a look was saved. Each record carries the
-  catalog identifier of the style involved, whether you are a
-  subscriber, and how long a generation took. It never carries your
+  catalog identifier of the hairstyle or hair color involved,
+  whether you are a subscriber, and how long a generation took. It never carries your
   selfie, your generated image, the text of an Ask Nora message, or
   any identifier that would let Mixpanel recognise you in another
   app. See section 3.8 for the full disclosure.
@@ -365,14 +365,15 @@ separately here.
   hairstyle generation started, succeeded or failed, that the
   subscription screen was shown and which situation triggered it,
   that a subscription was purchased, restored or cancelled at the
-  payment sheet, that a look was saved, or that a question was sent
-  to Ask Nora.
+  payment sheet, that a look was saved, that a question was sent
+  to Ask Nora, or that an in-app announcement of new features was
+  shown, acted on or dismissed.
 - A small number of details attached to those actions: the catalog
-  identifier of the hairstyle involved (for example
-  `knotless_braids_medium`), whether you currently hold a
-  subscription, how many free generations you have used, how long a
-  generation took, and the price and currency of a completed
-  purchase.
+  identifier of the hairstyle or hair color involved (for example
+  `knotless_braids_medium` or `honey_blonde`), whether you
+  currently hold a subscription, how many free generations you have
+  used, how long a generation took, and the price and currency of a
+  completed purchase.
 - The same anonymous app user identifier that RevenueCat uses, so
   that subscription activity and app usage can be understood as
   belonging to one installation rather than two unrelated ones.
@@ -446,7 +447,7 @@ We share information only in the limited circumstances listed below.
 - **RevenueCat** — We share your anonymous app user ID and the App Store receipt for any subscription purchase with RevenueCat so they can verify entitlements, sync subscription state across your devices, and power "Restore Purchases". RevenueCat does not receive your selfie, generated images, or any data about hairstyles you try on.
 - **AppsFlyer** — For users who consent to the iOS App Tracking Transparency prompt, we share your device advertising identifier (IDFA), install and session data, standard device metadata, and (via RevenueCat's server-to-server integration) subscription-lifecycle events with AppsFlyer so they can attribute your install and subscription to a marketing campaign. For users who decline the ATT prompt, only aggregated, anonymized SKAdNetwork data is exchanged. AppsFlyer does not receive your selfie, generated images, hairstyle choices, or any Nora-specific content. See section 3.7 for the full attribution disclosure.
 - **TikTok (and any other ad networks we advertise on)** — Through Apple's SKAdNetwork framework and AppsFlyer's server-to-server postback pipeline, aggregated, campaign-level conversion signals (e.g., "an install occurred following campaign #123") are delivered to the ad networks we advertise on. No individual user data, IDFA, or Nora-specific content is shared with ad networks through this pathway.
-- **Mixpanel** — We share records of in-app actions (such as a generation starting or the subscription screen being shown), the catalog identifier of the hairstyle involved, your subscription status, the price and currency of a completed purchase, your anonymous app user ID, and standard device metadata, so we can analyse how Nora is used and improve it. Mixpanel does not receive your selfie, your generated images, the contents of Ask Nora messages, or your advertising identifier, and we have not enabled its screen-recording feature. See section 3.8 for the full product-analytics disclosure.
+- **Mixpanel** — We share records of in-app actions (such as a generation starting or the subscription screen being shown), the catalog identifier of the hairstyle or hair color involved, your subscription status, the price and currency of a completed purchase, your anonymous app user ID, and standard device metadata, so we can analyse how Nora is used and improve it. Mixpanel does not receive your selfie, your generated images, the contents of Ask Nora messages, or your advertising identifier, and we have not enabled its screen-recording feature. See section 3.8 for the full product-analytics disclosure.
 - **Our email provider** — Anything you type into the Contact Us form is delivered to our support inbox so we can respond to you.
 - **Authorities (when legally required)** — Information we hold may be disclosed if we are compelled to do so by valid legal process.
 
